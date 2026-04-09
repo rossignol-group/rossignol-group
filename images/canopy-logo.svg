@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 68" width="264" height="68" role="img" aria-label="Canopy">
+  <title>Canopy</title>
+
+  <!-- Logomark — three arc layers -->
+  <path d="M 10 62 Q 40 10 70 62" fill="none" stroke="#4daa6e" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M 18 62 Q 48 18 78 62" fill="none" stroke="#00843D" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M 26 62 Q 56 28 86 62" fill="none" stroke="#FDB913" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="8" y1="64" x2="88" y2="64" stroke="#00843D" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Wordmark -->
+  <text
+    x="102"
+    y="52"
+    font-family="Inter, Raleway, 'Source Sans Pro', Helvetica, sans-serif"
+    font-size="36"
+    font-weight="700"
+    letter-spacing="-0.5"
+    fill="#00843D"
+  >Canopy</text>
+
+</svg>

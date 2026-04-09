@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 72" width="256" height="72" role="img" aria-label="Rossignol">
+  <title>Rossignol</title>
+  <defs>
+    <radialGradient id="blueDot" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#90d4ff"/>
+      <stop offset="55%" stop-color="#3b9fe8"/>
+      <stop offset="100%" stop-color="#1a6dc2"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Decorative blue circle — above the 'i' in Rossignol -->
+  <circle cx="124" cy="13" r="9.5" fill="url(#blueDot)"/>
+
+  <!-- Wordmark — white on dark, bold rounded sans-serif -->
+  <text
+    x="6"
+    y="64"
+    font-family="Raleway, Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="46"
+    font-weight="800"
+    letter-spacing="-1"
+    fill="#ffffff"
+  >Rossignol</text>
+</svg>

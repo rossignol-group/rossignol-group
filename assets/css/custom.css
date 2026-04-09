@@ -1,0 +1,1376 @@
+/* ============================================================
+   ROSSIGNOL / CANOPY — Custom Theme Override
+   Forest Green palette, navigation, and product styling
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap');
+
+/* ---- CSS Variables — Australian palette ---- */
+:root {
+  /* Brand colours */
+  --au-green:       #00843D;  /* PANTONE 348C */
+  --au-gold:        #FDB913;  /* PANTONE 116C */
+
+  /* Dark section backgrounds */
+  --forest-deep:    #001a0d;  /* very dark green — hero, invert sections */
+  --forest-mid:     #00321a;  /* mid dark green */
+
+  /* Accent / highlight */
+  --forest-accent:  #00843D;  /* PANTONE 348C — icons, borders on light bg */
+  --forest-light:   #4daa6e;  /* lighter 348C — readable on dark bg */
+  --forest-pale:    #e6f5ec;  /* very light green tint */
+
+  /* CTAs — gold primary */
+  --cta-green:      #FDB913;  /* PANTONE 116C gold — primary button */
+  --cta-hover:      #d99d0e;  /* darker gold on hover */
+  --cta-text:       #001a0d;  /* dark text on gold buttons */
+
+  /* Section backgrounds & text */
+  --bg-light-tint:  #f5fbf8;
+  --text-on-dark:   #f0f8f4;
+  --muted-on-dark:  rgba(200, 235, 215, 0.7);
+  --nav-height:     68px;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: var(--nav-height);
+  background: rgba(11, 29, 19, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(82, 183, 136, 0.18);
+  display: flex;
+  align-items: center;
+  padding: 0 2.5rem;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.site-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.site-nav a {
+  color: rgba(232, 245, 238, 0.82) !important;
+  text-decoration: none !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+  border-bottom: none !important;
+}
+
+.site-nav a:hover {
+  color: var(--forest-light) !important;
+  background: rgba(82, 183, 136, 0.1);
+}
+
+.site-nav a.active {
+  color: var(--forest-accent) !important;
+}
+
+.nav-cta {
+  margin-left: 1rem;
+  background: var(--au-gold) !important;
+  color: var(--forest-deep) !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  padding: 0.55rem 1.25rem;
+  border-radius: 4px;
+  border-bottom: none !important;
+  transition: background 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.nav-cta:hover {
+  background: var(--cta-hover) !important;
+  color: var(--forest-deep) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #e8f5ee !important;
+  -webkit-text-fill-color: #e8f5ee !important;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .site-nav, .nav-cta {
+    display: none;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .nav-mobile-open .site-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0; right: 0;
+    background: var(--forest-deep);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(82, 183, 136, 0.18);
+  }
+  .nav-mobile-open .nav-cta {
+    display: block;
+    margin: 1rem 2rem 1.5rem;
+    text-align: center;
+  }
+}
+
+/* Push page content below fixed nav */
+#wrapper {
+  padding-top: var(--nav-height);
+}
+
+/* ============================================================
+   TYPOGRAPHY OVERRIDES — Raleway for headings
+   ============================================================ */
+
+/* Body copy — Manrope */
+body, p, ul, ol, li, td, th, label,
+input, textarea, select,
+.major, .content p {
+  font-family: 'Manrope', 'Source Sans Pro', Helvetica, sans-serif !important;
+}
+
+/* Headings — Inter */
+h1, h2, h3, h4, h5, h6,
+.banner .content h1, .banner .content h2,
+.spotlight .content h2, .wrapper .inner h2 {
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Nav + buttons + labels — Inter */
+.site-nav a, .nav-cta, .hero-eyebrow, .button,
+.section-label, .mock-logo {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Hero h1 — clearly secondary in scale to the logo wordmark */
+.banner .content h1 {
+  font-size: 2.1rem !important;
+  line-height: 1.28 !important;
+  font-weight: 700 !important;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   COLOR PALETTE — Dark sections → Forest Green
+   ============================================================ */
+
+/* Primary invert/dark section backgrounds */
+#wrapper > .invert,
+#wrapper > section.invert,
+#wrapper > .banner.invert,
+#wrapper > .spotlight.invert {
+  background-color: var(--forest-deep) !important;
+}
+
+#wrapper > .wrapper.style2.invert > .inner {
+  background-color: var(--forest-mid) !important;
+}
+
+/* Alternate light section background — light green tint */
+.wrapper.style1.bg-tint {
+  background-color: var(--bg-light-tint);
+}
+
+/* Footer */
+footer.wrapper.style1 {
+  background-color: var(--forest-deep) !important;
+  color: var(--text-on-dark) !important;
+}
+
+footer.wrapper.style1 p,
+footer.wrapper.style1 a {
+  color: var(--muted-on-dark) !important;
+}
+
+footer.wrapper.style1 .icons a {
+  color: var(--muted-on-dark) !important;
+}
+
+footer.wrapper.style1 .icons a:hover {
+  color: var(--forest-accent) !important;
+}
+
+/* ============================================================
+   ACCENT COLOURS — Australian green + gold
+   ============================================================ */
+
+/* Icon circles on services/items sections — PANTONE 348C */
+.icon.style2 {
+  color: var(--au-green) !important;
+  border-color: var(--au-green) !important;
+}
+
+/* Section label eyebrow — gold on dark backgrounds */
+.invert .section-label,
+.banner .section-label {
+  color: var(--au-gold);
+}
+
+/* Hero full wordmark logo — SVG version with own colours, no filter */
+.hero-wordmark {
+  display: block;
+  width: 260px;
+  max-width: 72%;
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+/* Hero eyebrow pill — gold tint */
+.banner .hero-eyebrow {
+  color: var(--au-gold);
+  background: rgba(253, 185, 19, 0.1);
+  border-color: rgba(253, 185, 19, 0.3);
+}
+
+/* Canopy logo on hero (canopy.html) */
+.canopy-hero-logo {
+  display: block;
+  width: 260px;
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 1.75rem;
+}
+
+/* Canopy logo on light-bg spotlight section (index.html) */
+.canopy-section-logo {
+  display: block;
+  width: 200px;
+  max-width: 75%;
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+/* Canopy badge — gold accent */
+.canopy-badge {
+  color: var(--forest-deep);
+  background: rgba(253, 185, 19, 0.18);
+  border-color: var(--au-gold);
+}
+.canopy-badge::before {
+  background: var(--au-gold);
+}
+
+/* Primary buttons */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* Default "outline" button style on light sections — green */
+.button:not(.primary) {
+  border-color: var(--au-green) !important;
+  color: var(--au-green) !important;
+}
+
+.button:not(.primary):hover {
+  background-color: var(--au-green) !important;
+  color: #ffffff !important;
+}
+
+/* Filled button (on dark/invert sections) — gold with DARK text
+   Uses same #wrapper specificity as main.css so load-order wins */
+#wrapper > .invert .button,
+#wrapper > .banner.invert .button,
+.invert .button,
+.banner.invert .button {
+  background-color: var(--au-gold) !important;
+  border-color: var(--au-gold) !important;
+  color: #001a0d !important;
+  -webkit-text-fill-color: #001a0d !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+#wrapper > .invert .button:hover,
+#wrapper > .banner.invert .button:hover,
+.invert .button:hover,
+.banner.invert .button:hover {
+  background-color: var(--cta-hover) !important;
+  border-color: var(--cta-hover) !important;
+  color: #001a0d !important;
+  -webkit-text-fill-color: #001a0d !important;
+  box-shadow: none !important;
+}
+
+/* Submit button on contact form — green */
+.wrapper input[type="submit"] {
+  background-color: var(--au-green) !important;
+  border-color: var(--au-green) !important;
+  color: #ffffff !important;
+}
+
+.wrapper input[type="submit"]:hover {
+  background-color: #006b31 !important;
+  border-color: #006b31 !important;
+}
+
+/* ============================================================
+   HERO / BANNER OVERRIDES
+   ============================================================ */
+
+.banner .content .major {
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest-accent);
+  background: rgba(82, 183, 136, 0.12);
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ============================================================
+   DEADLINE / URGENCY SECTION
+   ============================================================ */
+
+.deadline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .deadline-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.deadline-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(82, 183, 136, 0.2);
+  border-radius: 8px;
+  padding: 1.75rem 1.5rem;
+  text-align: left;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.deadline-card:hover {
+  border-color: rgba(82, 183, 136, 0.5);
+  background: rgba(82, 183, 136, 0.06);
+}
+
+.deadline-card .group-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--au-gold);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.deadline-card h3 {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin-bottom: 0.5rem;
+}
+
+.deadline-card .deadline-date {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  color: var(--au-gold);
+  opacity: 0.85;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.deadline-card p {
+  font-size: 0.85rem;
+  color: var(--muted-on-dark);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.deadline-card.highlight {
+  border-color: var(--forest-accent);
+  background: rgba(82, 183, 136, 0.08);
+}
+
+.deadline-card.highlight .group-label {
+  color: var(--forest-light);
+}
+
+/* ============================================================
+   HOW CANOPY WORKS — 3-step section
+   ============================================================ */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 3rem 0 1rem;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step-card {
+  padding: 2rem 1.75rem;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.step-card:hover {
+  box-shadow: 0 8px 32px rgba(64, 145, 108, 0.12);
+  transform: translateY(-3px);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--forest-deep);
+  color: var(--au-gold);
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+}
+
+.step-card h3 {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep) !important;
+  margin-bottom: 0.65rem;
+}
+
+.step-card p {
+  font-size: 0.9rem;
+  color: rgba(0,0,0,0.6);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ============================================================
+   PRODUCT BADGE — Canopy
+   ============================================================ */
+
+.canopy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest-deep);
+  background: var(--forest-pale);
+  border: 1px solid var(--forest-accent);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+}
+
+.canopy-badge::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--forest-accent);
+  border-radius: 50%;
+}
+
+/* ============================================================
+   OUTPUTS / FEATURES GRID — on Canopy page
+   ============================================================ */
+
+.outputs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+@media (max-width: 640px) {
+  .outputs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.output-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(82,183,136,0.18);
+  border-radius: 8px;
+}
+
+.output-icon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  color: var(--forest-accent);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.output-item h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.output-item p {
+  font-size: 0.82rem;
+  color: var(--muted-on-dark);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================================
+   STANDARDS STRIP
+   ============================================================ */
+
+.standards-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(82,183,136,0.15);
+  border-bottom: 1px solid rgba(82,183,136,0.15);
+}
+
+.standards-strip span {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  opacity: 0.8;
+}
+
+.standards-strip .divider {
+  width: 1px;
+  height: 1rem;
+  background: rgba(82,183,136,0.3);
+}
+
+/* ============================================================
+   SERVICES PAGE CARDS
+   ============================================================ */
+
+.service-card {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  padding: 2rem 1.75rem;
+  text-align: left;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  height: 100%;
+}
+
+.service-card:hover {
+  box-shadow: 0 8px 32px rgba(64, 145, 108, 0.12);
+  transform: translateY(-3px);
+}
+
+.service-card .service-icon {
+  width: 3rem;
+  height: 3rem;
+  background: var(--bg-light-tint);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--cta-green);
+  font-size: 1.2rem;
+}
+
+.service-card h3 {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep) !important;
+  margin-bottom: 0.6rem;
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  color: rgba(0,0,0,0.58);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.services-grid-custom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .services-grid-custom {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid-custom {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   ENGAGEMENT MODEL
+   ============================================================ */
+
+.engagement-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 2rem 0;
+  text-align: left;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.engagement-step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.engagement-step:last-child {
+  border-bottom: none;
+}
+
+.engagement-step .e-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  background: var(--forest-deep);
+  color: var(--forest-accent);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.engagement-step h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--forest-deep);
+  margin-bottom: 0.3rem;
+}
+
+.engagement-step p {
+  font-size: 0.87rem;
+  color: rgba(0,0,0,0.58);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================
+   ABOUT / MISSION SECTION
+   ============================================================ */
+
+.mission-statement {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--text-on-dark);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+}
+
+.mission-statement strong {
+  font-weight: 600;
+  color: var(--forest-light);
+}
+
+/* ============================================================
+   GALLERY / TEAM OVERRIDES
+   ============================================================ */
+
+.gallery.style2 article .caption h3 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================================
+   MISC UTILITY
+   ============================================================ */
+
+.text-accent {
+  color: var(--forest-accent);
+}
+
+.section-label {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--forest-accent);
+  margin-bottom: 0.75rem;
+}
+
+.inner.narrow {
+  max-width: 52rem;
+}
+
+/* Smooth scroll offset for fixed nav */
+[id] {
+  scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+}
+
+/* ============================================================
+   ENGAGEMENT STEPS — dark background text fix
+   ============================================================ */
+
+.invert .engagement-step {
+  border-bottom-color: rgba(82, 183, 136, 0.15);
+}
+
+.invert .engagement-step h4 {
+  color: #ffffff !important;
+}
+
+.invert .engagement-step p {
+  color: var(--muted-on-dark) !important;
+}
+
+/* ============================================================
+   DEADLINE CARD — tick mark for 'already in motion'
+   ============================================================ */
+
+.deadline-card .tick-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--au-gold);
+  background: rgba(253, 185, 19, 0.1);
+  border: 1px solid rgba(253, 185, 19, 0.35);
+  padding: 0.25rem 0.6rem;
+  border-radius: 2rem;
+  margin-top: 0.65rem;
+}
+
+.deadline-card .tick-badge::before {
+  content: '✓';
+  font-size: 0.75rem;
+}
+
+/* ============================================================
+   DEVICE MOCKUP — Canopy Platform Preview
+   ============================================================ */
+
+/* Make the image side of banner/spotlight a valid relative container */
+.banner .image,
+.spotlight .image {
+  position: relative !important;
+  overflow: hidden;
+}
+
+.device-wrapper {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2rem;
+  z-index: 20;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.55));
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ---- Phone frame: locked 9:19.5 aspect ratio — never stretches ---- */
+.device-frame {
+  /* Width only — height is always derived from aspect-ratio */
+  width: 185px;
+  aspect-ratio: 9 / 19.5;
+  background: #111;
+  border-radius: 30px;
+  border: 2px solid #2a2a2a;
+  box-shadow:
+    0 0 0 1px #000 inset,
+    0 2px 8px rgba(0,0,0,0.6);
+  /* Flex column so notch + screen fill the fixed height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;   /* clip any content that overflows */
+  padding: 10px 10px 14px;
+  box-sizing: border-box;
+}
+
+.device-notch {
+  width: 52px;
+  height: 7px;
+  background: #111;
+  border-radius: 0 0 6px 6px;
+  margin: 0 auto 8px;
+  flex-shrink: 0;
+}
+
+.device-screen {
+  flex: 1;             /* fill all remaining height inside the locked frame */
+  background: #0a1910;
+  border-radius: 22px;
+  padding: 12px 10px 10px;
+  overflow: hidden;
+  min-height: 0;       /* allow flex shrink below content size */
+}
+
+/* ---- App UI elements (all mock-* classes) ---- */
+
+/* Status bar: time + signal/battery */
+.mock-statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+  padding: 0 1px;
+}
+.mock-time {
+  font-family: 'Inter', 'Manrope', sans-serif;
+  font-size: 6px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+}
+.mock-icons {
+  font-size: 5.5px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+}
+
+/* Top bar: logo + year pill */
+.mock-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.mock-logo {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--au-gold);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.mock-status-pill {
+  font-size: 5.5px;
+  background: rgba(82, 183, 136, 0.15);
+  color: #4daa6e;
+  border: 1px solid rgba(82, 183, 136, 0.25);
+  padding: 2px 5px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Company selector row */
+.mock-company {
+  font-family: 'Manrope', sans-serif;
+  font-size: 7.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 9px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Section labels */
+.mock-section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 5px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.28);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 5px;
+}
+
+/* Disclosure progress header */
+.mock-prog-header {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.mock-prog-pct {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--au-gold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.mock-prog-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 6px;
+  color: rgba(255,255,255,0.35);
+}
+
+/* Progress bar */
+.mock-prog-bar {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  height: 3px;
+  margin-bottom: 9px;
+  overflow: hidden;
+}
+.mock-prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--au-green), var(--au-gold));
+  border-radius: 3px;
+  width: 68%;
+}
+
+/* Emissions: 2-col row for Scope 1+2 */
+.mock-em-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.mock-em-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 5px;
+  padding: 4px 5px;
+}
+.mock-em-scope {
+  font-family: 'Inter', sans-serif;
+  font-size: 5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 2px;
+}
+.mock-em-val {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: -0.02em;
+}
+.mock-em-bar {
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-top: 3px;
+  overflow: hidden;
+}
+.mock-em-fill {
+  height: 100%;
+  background: var(--au-green);
+  border-radius: 2px;
+}
+
+/* Scope 3 — full width card */
+.mock-em-wide {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 5px;
+  padding: 4px 5px;
+  margin-bottom: 9px;
+}
+.mock-em-wide-inner {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+}
+.mock-em-wide .mock-em-val {
+  font-size: 9px;
+  flex-shrink: 0;
+}
+.mock-em-bar--wide {
+  flex: 1;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.mock-em-bar--wide .mock-em-fill {
+  background: linear-gradient(90deg, var(--au-green), var(--au-gold));
+}
+
+/* AASB S2 status list */
+.mock-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 8px;
+}
+.mock-status-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.025);
+  border-radius: 4px;
+  padding: 3px 4px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.mock-st-icon {
+  font-size: 6px;
+  width: 9px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.mock-st-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 6.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  flex: 1;
+}
+.mock-st-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.mock-status-row.done .mock-st-icon { color: var(--au-green); }
+.mock-status-row.done .mock-st-badge { color: var(--au-green); background: rgba(0,132,61,0.15); }
+.mock-status-row.done { border-color: rgba(0,132,61,0.15); }
+.mock-status-row.prog .mock-st-icon { color: #f0c040; }
+.mock-status-row.prog .mock-st-badge { color: #f0c040; background: rgba(240,192,64,0.12); }
+.mock-status-row.open .mock-st-icon { color: rgba(255,255,255,0.25); }
+.mock-status-row.open .mock-st-badge { color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); }
+
+/* Action button */
+.mock-action {
+  background: var(--cta-green);
+  border-radius: 5px;
+  padding: 5px 6px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 6.5px;
+  font-weight: 700;
+  color: #001a0d;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 8px;
+}
+
+/* Bottom navigation */
+.mock-bottomnav {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.mock-nav-item {
+  font-size: 10px;
+  opacity: 0.35;
+  cursor: default;
+}
+.mock-nav-item.active {
+  opacity: 1;
+  filter: drop-shadow(0 0 3px var(--au-gold));
+}
+
+/* Standard device — hide below 980px where image area gets too small */
+@media (max-width: 980px) {
+  .device-wrapper:not(.device-wrapper--hero) {
+    display: none;
+  }
+}
+
+/* ============================================================
+   DEVICE MOCKUP — Hero-size variant (canopy.html)
+   ============================================================ */
+
+.device-wrapper--hero {
+  right: auto;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  transform: translateX(-50%) translateY(-50%);
+  animation: float-hero 5s ease-in-out infinite;
+}
+
+@keyframes float-hero {
+  0%, 100% { transform: translateX(-50%) translateY(-50%); }
+  50%       { transform: translateX(-50%) translateY(calc(-50% - 10px)); }
+}
+
+.device-wrapper--hero .device-frame {
+  width: 270px;
+  /* aspect-ratio: 9 / 19.5 is inherited from .device-frame above */
+}
+
+.device-wrapper--hero .device-notch {
+  width: 72px;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+.device-wrapper--hero .device-screen {
+  padding: 14px 13px 12px;
+}
+
+/* Scale up all mock UI text for the hero (270px) variant */
+.device-wrapper--hero .mock-time       { font-size: 8px; }
+.device-wrapper--hero .mock-icons      { font-size: 7.5px; }
+.device-wrapper--hero .mock-topbar     { margin-bottom: 11px; padding-bottom: 9px; }
+.device-wrapper--hero .mock-logo       { font-size: 12.5px; }
+.device-wrapper--hero .mock-status-pill{ font-size: 7.5px; padding: 2.5px 7px; }
+.device-wrapper--hero .mock-company    { font-size: 10px; margin-bottom: 11px; padding-bottom: 9px; }
+.device-wrapper--hero .mock-section-label { font-size: 6.5px; margin-bottom: 6px; }
+.device-wrapper--hero .mock-prog-pct   { font-size: 30px; }
+.device-wrapper--hero .mock-prog-sub   { font-size: 8px; }
+.device-wrapper--hero .mock-prog-bar   { height: 4px; margin-bottom: 11px; }
+.device-wrapper--hero .mock-em-scope   { font-size: 6.5px; }
+.device-wrapper--hero .mock-em-val     { font-size: 12px; }
+.device-wrapper--hero .mock-st-icon    { font-size: 8px; width: 12px; }
+.device-wrapper--hero .mock-st-name    { font-size: 8.5px; }
+.device-wrapper--hero .mock-st-badge   { font-size: 6.5px; }
+.device-wrapper--hero .mock-action     { font-size: 8.5px; padding: 7px 8px; border-radius: 6px; }
+.device-wrapper--hero .mock-nav-item   { font-size: 13px; }
+.device-wrapper--hero .mock-bottomnav  { padding-top: 8px; }
+
+/* Hero device — scale down at compressed widths, hide only at phone-narrow */
+@media (max-width: 980px) {
+  .device-wrapper--hero .device-frame {
+    width: 200px;
+  }
+}
+@media (max-width: 736px) {
+  .device-wrapper--hero .device-frame {
+    width: 145px;
+  }
+}
+@media (max-width: 480px) {
+  .device-wrapper--hero {
+    display: none;
+  }
+}
+
+/* ============================================================
+   TEAM GALLERY — remove click behaviour, centre 3 photos
+   ============================================================ */
+
+/* Centre the flex items when fewer than a full row */
+.gallery.style2 {
+  justify-content: center !important;
+}
+
+/* Disable pointer on image spans (was <a> links) */
+.gallery.style2 article .image {
+  cursor: default;
+  display: block;
+}
+
+/* Keep hover caption overlay — works off article:hover, not the link */
+
+/* ============================================================
+   TEAM GRID — custom centered layout (replaces Story gallery)
+   ============================================================ */
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 2rem 3.5rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.team-card {
+  flex: 0 0 220px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.team-card .team-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 3 / 4;
+  background: #111;
+}
+
+.team-card .team-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: grayscale(20%);
+}
+
+/* Hover overlay — disabled, static label below photo is used instead */
+.team-card .team-photo-wrap::after {
+  display: none;
+}
+
+.team-card .team-overlay {
+  display: none;
+}
+
+.team-overlay h3 {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin: 0 0 0.2rem !important;
+}
+
+.team-overlay p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  color: var(--au-gold) !important;
+  margin: 0 !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Static name below photo (always visible) */
+.team-card .team-label {
+  padding: 0.75rem 0 0;
+  text-align: center;
+}
+
+.team-card .team-label h3 {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep) !important;
+  margin: 0 0 0.2rem !important;
+}
+
+.team-card .team-label p {
+  font-size: 0.8rem;
+  color: var(--au-green) !important;
+  margin: 0 !important;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    gap: 1.5rem;
+    padding: 1rem 1.5rem 2rem;
+  }
+  .team-card {
+    flex: 0 0 160px;
+  }
+}
