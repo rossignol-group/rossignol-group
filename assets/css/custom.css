@@ -1,34 +1,43 @@
 /* ============================================================
-   ROSSIGNOL / CANOPY — Custom Theme Override
-   Forest Green palette, navigation, and product styling
+   ROSSIGNOL — Custom Theme Override
+   Black / white / gray — shadcn-inspired neutral palette
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* ---- CSS Variables — Australian palette ---- */
+/* ---- CSS Variables — Neutral palette ---- */
 :root {
-  /* Brand colours */
-  --au-green:       #00843D;  /* PANTONE 348C */
-  --au-gold:        #FDB913;  /* PANTONE 116C */
+  /* Dark surfaces */
+  --bg-dark:        #09090b;  /* zinc-950 — hero, invert sections */
+  --bg-dark-2:      #18181b;  /* zinc-900 — elevated dark */
 
-  /* Dark section backgrounds */
-  --forest-deep:    #001a0d;  /* very dark green — hero, invert sections */
-  --forest-mid:     #00321a;  /* mid dark green */
+  /* Borders */
+  --border-dark:    #27272a;  /* zinc-800 — borders on dark */
+  --border-mid:     #3f3f46;  /* zinc-700 — hover borders on dark */
+  --border-light:   #e4e4e7;  /* zinc-200 — borders on light */
 
-  /* Accent / highlight */
-  --forest-accent:  #00843D;  /* PANTONE 348C — icons, borders on light bg */
-  --forest-light:   #4daa6e;  /* lighter 348C — readable on dark bg */
-  --forest-pale:    #e6f5ec;  /* very light green tint */
+  /* Text */
+  --text-primary:   #09090b;  /* near-black */
+  --text-muted:     #71717a;  /* zinc-500 — muted on light */
+  --text-on-dark:   #fafafa;  /* near-white */
+  --muted-on-dark:  #a1a1aa;  /* zinc-400 — muted on dark */
 
-  /* CTAs — gold primary */
-  --cta-green:      #FDB913;  /* PANTONE 116C gold — primary button */
-  --cta-hover:      #d99d0e;  /* darker gold on hover */
-  --cta-text:       #001a0d;  /* dark text on gold buttons */
+  /* Light surfaces */
+  --bg-subtle:      #fafafa;  /* zinc-50 — subtle bg tint */
 
-  /* Section backgrounds & text */
-  --bg-light-tint:  #f5fbf8;
-  --text-on-dark:   #f0f8f4;
-  --muted-on-dark:  rgba(200, 235, 215, 0.7);
+  /* Legacy aliases — keep for device mockup compatibility */
+  --au-green:       #09090b;
+  --au-gold:        #fafafa;
+  --forest-deep:    #09090b;
+  --forest-mid:     #18181b;
+  --forest-accent:  #09090b;
+  --forest-light:   #a1a1aa;
+  --forest-pale:    #fafafa;
+  --cta-green:      #fafafa;
+  --cta-hover:      #e4e4e7;
+  --cta-text:       #09090b;
+  --bg-light-tint:  #fafafa;
+
   --nav-height:     68px;
 }
 
@@ -43,10 +52,10 @@
   right: 0;
   z-index: 9999;
   height: var(--nav-height);
-  background: rgba(11, 29, 19, 0.96);
+  background: rgba(9, 9, 11, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(82, 183, 136, 0.18);
+  border-bottom: 1px solid var(--border-dark);
   display: flex;
   align-items: center;
   padding: 0 2.5rem;
@@ -77,49 +86,52 @@
 }
 
 .site-nav a {
-  color: rgba(232, 245, 238, 0.82) !important;
+  color: var(--muted-on-dark) !important;
   text-decoration: none !important;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: none;
   padding: 0.5rem 0.9rem;
-  border-radius: 4px;
-  transition: color 0.2s ease, background 0.2s ease;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
   border-bottom: none !important;
 }
 
 .site-nav a:hover {
-  color: var(--forest-light) !important;
-  background: rgba(82, 183, 136, 0.1);
+  color: var(--text-on-dark) !important;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .site-nav a.active {
-  color: var(--forest-accent) !important;
+  color: var(--text-on-dark) !important;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-cta {
   margin-left: 1rem;
-  background: var(--au-gold) !important;
-  color: var(--forest-deep) !important;
-  font-family: 'Raleway', sans-serif;
+  background: #ffffff !important;
+  color: #09090b !important;
+  -webkit-text-fill-color: #09090b !important;
+  font-family: 'Inter', sans-serif;
   font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
   text-decoration: none !important;
-  padding: 0.55rem 1.25rem;
-  border-radius: 4px;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
   border-bottom: none !important;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition: background 0.15s ease, opacity 0.15s ease;
   white-space: nowrap;
 }
 
 .nav-cta:hover {
-  background: var(--cta-hover) !important;
-  color: var(--forest-deep) !important;
-  transform: translateY(-1px);
+  background: var(--border-light) !important;
+  color: #09090b !important;
+  -webkit-text-fill-color: #09090b !important;
+  opacity: 1;
 }
 
 /* Mobile nav toggle */
@@ -127,8 +139,8 @@
   display: none;
   background: none;
   border: none;
-  color: #e8f5ee !important;
-  -webkit-text-fill-color: #e8f5ee !important;
+  color: var(--muted-on-dark) !important;
+  -webkit-text-fill-color: var(--muted-on-dark) !important;
   font-size: 1.4rem;
   cursor: pointer;
   padding: 0.25rem;
@@ -148,9 +160,9 @@
     position: fixed;
     top: var(--nav-height);
     left: 0; right: 0;
-    background: var(--forest-deep);
+    background: var(--bg-dark);
     padding: 1.5rem 2rem;
-    border-bottom: 1px solid rgba(82, 183, 136, 0.18);
+    border-bottom: 1px solid var(--border-dark);
   }
   .nav-mobile-open .nav-cta {
     display: block;
@@ -165,21 +177,166 @@
 }
 
 /* ============================================================
-   TYPOGRAPHY OVERRIDES — Raleway for headings
+   NAVIGATION DROPDOWN — Solutions
    ============================================================ */
 
-/* Body copy — Manrope */
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown-trigger {
+  display: flex !important;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.nav-chevron {
+  font-size: 0.58rem;
+  opacity: 0.65;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-dropdown:hover .nav-chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;           /* no gap — menu starts right at trigger bottom */
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 152px;
+  /* padding-top creates the visual gap while keeping the hover area continuous */
+  padding: 0.55rem 0.35rem 0.35rem;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.2s ease;
+  z-index: 10000;
+}
+
+/* Visible panel is a pseudo-element so the padding gap stays transparent */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: 0.55rem;        /* sits below the transparent padding bridge */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1c1c1f;
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  z-index: -1;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.48rem 0.8rem;
+  color: var(--muted-on-dark) !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  border-radius: 5px;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  white-space: nowrap;
+  transition: color 0.12s ease, background 0.12s ease;
+}
+
+.nav-dropdown-menu a:hover {
+  color: var(--text-on-dark) !important;
+  background: rgba(255,255,255,0.07);
+}
+
+/* Mobile: integrate dropdown into the hamburger menu cleanly */
+@media (max-width: 768px) {
+  .nav-dropdown {
+    display: contents; /* dissolve the wrapper — children join the nav flow */
+  }
+
+  /* Trigger looks identical to sibling nav links */
+  .nav-dropdown-trigger {
+    color: var(--muted-on-dark) !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    display: flex !important;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+
+  .nav-dropdown-trigger:hover,
+  .nav-dropdown-trigger.active {
+    color: var(--text-on-dark) !important;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* Sub-items always visible, indented below Solutions */
+  .nav-dropdown-menu {
+    position: static;
+    transform: none !important;
+    opacity: 1;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    min-width: unset;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-dropdown-menu::before { display: none; }
+
+  .nav-dropdown-menu a {
+    color: var(--muted-on-dark) !important;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.9rem 0.35rem 1.6rem; /* indent to show hierarchy */
+    opacity: 0.75;
+    border-radius: 6px;
+  }
+
+  .nav-dropdown-menu a:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .nav-chevron { display: none; }
+}
+
+/* ============================================================
+   TYPOGRAPHY OVERRIDES — Inter throughout
+   ============================================================ */
+
+/* Body copy — Inter */
 body, p, ul, ol, li, td, th, label,
 input, textarea, select,
 .major, .content p {
-  font-family: 'Manrope', 'Source Sans Pro', Helvetica, sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 /* Headings — Inter */
 h1, h2, h3, h4, h5, h6,
 .banner .content h1, .banner .content h2,
 .spotlight .content h2, .wrapper .inner h2 {
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-weight: 700;
   letter-spacing: -0.025em;
 }
@@ -199,7 +356,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ============================================================
-   COLOR PALETTE — Dark sections → Forest Green
+   COLOR PALETTE — Dark sections → near-black
    ============================================================ */
 
 /* Primary invert/dark section backgrounds */
@@ -207,21 +364,21 @@ h1, h2, h3, h4, h5, h6,
 #wrapper > section.invert,
 #wrapper > .banner.invert,
 #wrapper > .spotlight.invert {
-  background-color: var(--forest-deep) !important;
+  background-color: var(--bg-dark) !important;
 }
 
 #wrapper > .wrapper.style2.invert > .inner {
-  background-color: var(--forest-mid) !important;
+  background-color: var(--bg-dark-2) !important;
 }
 
-/* Alternate light section background — light green tint */
+/* Alternate light section background — subtle tint */
 .wrapper.style1.bg-tint {
-  background-color: var(--bg-light-tint);
+  background-color: var(--bg-subtle);
 }
 
 /* Footer */
 footer.wrapper.style1 {
-  background-color: var(--forest-deep) !important;
+  background-color: var(--bg-dark) !important;
   color: var(--text-on-dark) !important;
 }
 
@@ -235,23 +392,23 @@ footer.wrapper.style1 .icons a {
 }
 
 footer.wrapper.style1 .icons a:hover {
-  color: var(--forest-accent) !important;
+  color: var(--text-on-dark) !important;
 }
 
 /* ============================================================
-   ACCENT COLOURS — Australian green + gold
+   ACCENT COLOURS — neutral
    ============================================================ */
 
-/* Icon circles on services/items sections — PANTONE 348C */
+/* Icon circles on services/items sections */
 .icon.style2 {
-  color: var(--au-green) !important;
-  border-color: var(--au-green) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-light) !important;
 }
 
-/* Section label eyebrow — gold on dark backgrounds */
+/* Section label eyebrow — muted on dark backgrounds */
 .invert .section-label,
 .banner .section-label {
-  color: var(--au-gold);
+  color: var(--muted-on-dark);
 }
 
 /* Hero full wordmark logo — SVG version with own colours, no filter */
@@ -263,11 +420,11 @@ footer.wrapper.style1 .icons a:hover {
   margin-bottom: 1.25rem;
 }
 
-/* Hero eyebrow pill — gold tint */
+/* Hero eyebrow pill — neutral on dark */
 .banner .hero-eyebrow {
-  color: var(--au-gold);
-  background: rgba(253, 185, 19, 0.1);
-  border-color: rgba(253, 185, 19, 0.3);
+  color: var(--muted-on-dark);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Canopy logo on hero (canopy.html) */
@@ -288,14 +445,14 @@ footer.wrapper.style1 .icons a:hover {
   margin-bottom: 1.25rem;
 }
 
-/* Canopy badge — gold accent */
+/* Canopy badge */
 .canopy-badge {
-  color: var(--forest-deep);
-  background: rgba(253, 185, 19, 0.18);
-  border-color: var(--au-gold);
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+  border-color: var(--border-light);
 }
 .canopy-badge::before {
-  background: var(--au-gold);
+  background: var(--text-muted);
 }
 
 /* Primary buttons */
@@ -304,57 +461,75 @@ input[type="reset"],
 input[type="button"],
 button,
 .button {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-weight: 600 !important;
   letter-spacing: 0.06em !important;
 }
 
-/* Default "outline" button style on light sections — green */
+/* Default "outline" button style on light sections */
 .button:not(.primary) {
-  border-color: var(--au-green) !important;
-  color: var(--au-green) !important;
+  border-color: var(--border-light) !important;
+  color: var(--text-primary) !important;
+  border-radius: 6px !important;
 }
 
 .button:not(.primary):hover {
-  background-color: var(--au-green) !important;
-  color: #ffffff !important;
+  background-color: var(--bg-subtle) !important;
+  border-color: #d4d4d8 !important;
+  color: var(--text-primary) !important;
 }
 
-/* Filled button (on dark/invert sections) — gold with DARK text
+/* Filled button (on dark/invert sections) — white with dark text
    Uses same #wrapper specificity as main.css so load-order wins */
 #wrapper > .invert .button,
 #wrapper > .banner.invert .button,
 .invert .button,
 .banner.invert .button {
-  background-color: var(--au-gold) !important;
-  border-color: var(--au-gold) !important;
-  color: #001a0d !important;
-  -webkit-text-fill-color: #001a0d !important;
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #09090b !important;
+  -webkit-text-fill-color: #09090b !important;
   box-shadow: none !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
 }
 
 #wrapper > .invert .button:hover,
 #wrapper > .banner.invert .button:hover,
 .invert .button:hover,
 .banner.invert .button:hover {
-  background-color: var(--cta-hover) !important;
-  border-color: var(--cta-hover) !important;
-  color: #001a0d !important;
-  -webkit-text-fill-color: #001a0d !important;
+  background-color: var(--border-light) !important;
+  border-color: var(--border-light) !important;
+  color: #09090b !important;
+  -webkit-text-fill-color: #09090b !important;
   box-shadow: none !important;
 }
 
-/* Submit button on contact form — green */
+/* Submit button on contact form — light sections: dark fill */
 .wrapper input[type="submit"] {
-  background-color: var(--au-green) !important;
-  border-color: var(--au-green) !important;
+  background-color: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
   color: #ffffff !important;
+  border-radius: 6px !important;
 }
 
 .wrapper input[type="submit"]:hover {
-  background-color: #006b31 !important;
-  border-color: #006b31 !important;
+  background-color: #27272a !important;
+  border-color: #27272a !important;
+}
+
+/* Submit button on dark (invert) sections — match white filled style */
+.wrapper.invert input[type="submit"] {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #09090b !important;
+  -webkit-text-fill-color: #09090b !important;
+}
+
+.wrapper.invert input[type="submit"]:hover {
+  background-color: var(--border-light) !important;
+  border-color: var(--border-light) !important;
+  color: #09090b !important;
 }
 
 /* ============================================================
@@ -362,19 +537,19 @@ button,
    ============================================================ */
 
 .banner .content .major {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 .hero-eyebrow {
   display: inline-block;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--forest-accent);
-  background: rgba(82, 183, 136, 0.12);
-  border: 1px solid rgba(82, 183, 136, 0.3);
+  color: var(--muted-on-dark);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0.35rem 0.85rem;
   border-radius: 2rem;
   margin-bottom: 1.25rem;
@@ -399,8 +574,8 @@ button,
 }
 
 .deadline-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(82, 183, 136, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-dark);
   border-radius: 8px;
   padding: 1.75rem 1.5rem;
   text-align: left;
@@ -408,34 +583,33 @@ button,
 }
 
 .deadline-card:hover {
-  border-color: rgba(82, 183, 136, 0.5);
-  background: rgba(82, 183, 136, 0.06);
+  border-color: var(--border-mid);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .deadline-card .group-label {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--au-gold);
+  color: var(--muted-on-dark);
   margin-bottom: 0.5rem;
   display: block;
 }
 
 .deadline-card h3 {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
-  color: #ffffff !important;
+  color: var(--text-on-dark) !important;
   margin-bottom: 0.5rem;
 }
 
 .deadline-card .deadline-date {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
-  color: var(--au-gold);
-  opacity: 0.85;
+  color: var(--muted-on-dark);
   font-weight: 600;
   margin-bottom: 0.75rem;
   display: block;
@@ -449,12 +623,12 @@ button,
 }
 
 .deadline-card.highlight {
-  border-color: var(--forest-accent);
-  background: rgba(82, 183, 136, 0.08);
+  border-color: var(--border-mid);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .deadline-card.highlight .group-label {
-  color: var(--forest-light);
+  color: var(--text-on-dark);
 }
 
 /* ============================================================
@@ -476,45 +650,45 @@ button,
 }
 
 .step-card {
-  padding: 2rem 1.75rem;
+  padding: 1.75rem;
   background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 10px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .step-card:hover {
-  box-shadow: 0 8px 32px rgba(64, 145, 108, 0.12);
-  transform: translateY(-3px);
+  border-color: #d4d4d8;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
-.step-number {
-  display: inline-flex;
+.step-icon {
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: var(--forest-deep);
-  color: var(--au-gold);
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 50%;
-  margin-bottom: 1.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  margin: 0 auto 1.35rem;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .step-card h3 {
-  font-family: 'Raleway', sans-serif !important;
-  font-size: 1.15rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.05rem !important;
   font-weight: 600 !important;
-  color: var(--forest-deep) !important;
-  margin-bottom: 0.65rem;
+  color: var(--text-primary) !important;
+  margin-bottom: 0.6rem;
 }
 
 .step-card p {
-  font-size: 0.9rem;
-  color: rgba(0,0,0,0.6);
+  font-size: 0.88rem;
+  color: var(--text-muted);
   line-height: 1.65;
   margin: 0;
 }
@@ -527,7 +701,7 @@ button,
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -572,8 +746,8 @@ button,
   align-items: flex-start;
   gap: 1rem;
   padding: 1.25rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(82,183,136,0.18);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-dark);
   border-radius: 8px;
 }
 
@@ -581,7 +755,7 @@ button,
   flex-shrink: 0;
   width: 2rem;
   height: 2rem;
-  color: var(--forest-accent);
+  color: var(--muted-on-dark);
   font-size: 1.1rem;
   display: flex;
   align-items: center;
@@ -589,7 +763,7 @@ button,
 }
 
 .output-item h4 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   color: #ffffff;
@@ -615,24 +789,23 @@ button,
   flex-wrap: wrap;
   margin: 2rem 0;
   padding: 1.5rem 0;
-  border-top: 1px solid rgba(82,183,136,0.15);
-  border-bottom: 1px solid rgba(82,183,136,0.15);
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .standards-strip span {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--forest-light);
-  opacity: 0.8;
+  color: var(--muted-on-dark);
 }
 
 .standards-strip .divider {
   width: 1px;
   height: 1rem;
-  background: rgba(82,183,136,0.3);
+  background: var(--border-dark);
 }
 
 /* ============================================================
@@ -651,25 +824,26 @@ button,
 }
 
 .service-card:hover {
-  box-shadow: 0 8px 32px rgba(64, 145, 108, 0.12);
-  transform: translateY(-3px);
+  border-color: #d4d4d8;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
 .service-card .service-icon {
-  width: 3rem;
-  height: 3rem;
-  background: var(--bg-light-tint);
-  border-radius: 8px;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: var(--cta-green);
-  font-size: 1.2rem;
+  color: var(--text-muted);
+  font-size: 1rem;
 }
 
 .service-card h3 {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
   color: var(--forest-deep) !important;
@@ -736,7 +910,7 @@ button,
   height: 2rem;
   background: var(--forest-deep);
   color: var(--forest-accent);
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   border-radius: 50%;
@@ -747,7 +921,7 @@ button,
 }
 
 .engagement-step h4 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--forest-deep);
@@ -766,7 +940,7 @@ button,
    ============================================================ */
 
 .mission-statement {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
   line-height: 1.55;
@@ -785,7 +959,7 @@ button,
    ============================================================ */
 
 .gallery.style2 article .caption h3 {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-weight: 600 !important;
 }
 
@@ -794,17 +968,17 @@ button,
    ============================================================ */
 
 .text-accent {
-  color: var(--forest-accent);
+  color: var(--text-primary);
 }
 
 .section-label {
   display: block;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--forest-accent);
+  color: var(--text-muted);
   margin-bottom: 0.75rem;
 }
 
@@ -822,7 +996,7 @@ button,
    ============================================================ */
 
 .invert .engagement-step {
-  border-bottom-color: rgba(82, 183, 136, 0.15);
+  border-bottom-color: var(--border-dark);
 }
 
 .invert .engagement-step h4 {
@@ -841,14 +1015,14 @@ button,
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--au-gold);
-  background: rgba(253, 185, 19, 0.1);
-  border: 1px solid rgba(253, 185, 19, 0.35);
+  color: var(--muted-on-dark);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-dark);
   padding: 0.25rem 0.6rem;
   border-radius: 2rem;
   margin-top: 0.65rem;
@@ -932,7 +1106,7 @@ button,
   padding: 0 1px;
 }
 .mock-time {
-  font-family: 'Inter', 'Manrope', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 6px;
   font-weight: 600;
   color: rgba(255,255,255,0.7);
@@ -979,7 +1153,7 @@ button,
 
 /* Company selector row */
 .mock-company {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 7.5px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.55);
@@ -1015,7 +1189,7 @@ button,
   letter-spacing: -0.03em;
 }
 .mock-prog-sub {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 6px;
   color: rgba(255,255,255,0.35);
 }
@@ -1129,7 +1303,7 @@ button,
   flex-shrink: 0;
 }
 .mock-st-name {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 6.5px;
   font-weight: 500;
   color: rgba(255,255,255,0.7);
@@ -1152,16 +1326,16 @@ button,
 .mock-status-row.open .mock-st-icon { color: rgba(255,255,255,0.25); }
 .mock-status-row.open .mock-st-badge { color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); }
 
-/* Action button */
+/* Action button — keep Canopy green brand color on device */
 .mock-action {
-  background: var(--cta-green);
+  background: #00843D;
   border-radius: 5px;
   padding: 5px 6px;
   text-align: center;
   font-family: 'Inter', sans-serif;
   font-size: 6.5px;
   font-weight: 700;
-  color: #001a0d;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   margin-bottom: 8px;
@@ -1181,7 +1355,7 @@ button,
 }
 .mock-nav-item.active {
   opacity: 1;
-  filter: drop-shadow(0 0 3px var(--au-gold));
+  filter: drop-shadow(0 0 3px rgba(0,132,61,0.6));
 }
 
 /* Standard device — hide below 980px where image area gets too small */
@@ -1328,7 +1502,7 @@ button,
 }
 
 .team-overlay h3 {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
   color: #ffffff !important;
@@ -1336,12 +1510,12 @@ button,
 }
 
 .team-overlay p {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.78rem;
-  color: var(--au-gold) !important;
+  color: var(--muted-on-dark) !important;
   margin: 0 !important;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 /* Static name below photo (always visible) */
@@ -1351,18 +1525,18 @@ button,
 }
 
 .team-card .team-label h3 {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-size: 0.95rem !important;
   font-weight: 600 !important;
-  color: var(--forest-deep) !important;
+  color: var(--text-primary) !important;
   margin: 0 0 0.2rem !important;
 }
 
 .team-card .team-label p {
   font-size: 0.8rem;
-  color: var(--au-green) !important;
+  color: var(--text-muted) !important;
   margin: 0 !important;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @media (max-width: 600px) {
@@ -1373,4 +1547,381 @@ button,
   .team-card {
     flex: 0 0 160px;
   }
+}
+
+/* ============================================================
+   CONTEXT-AWARE READABILITY — alternating section overrides
+   ============================================================ */
+
+/* --- Hero eyebrow on LIGHT (non-invert) hero banners --- */
+.banner:not(.invert) .hero-eyebrow {
+  background: rgba(9,9,11,0.06);
+  border-color: rgba(9,9,11,0.15);
+  color: var(--text-muted);
+}
+
+/* --- section-label on LIGHT sections --- */
+.wrapper:not(.invert) .section-label,
+.banner:not(.invert) .section-label,
+.spotlight:not(.invert) .section-label {
+  color: var(--text-muted);
+  border-bottom-color: var(--border-light);
+}
+
+/* --- Step cards inside DARK sections (.invert) --- */
+.invert .step-card {
+  background: var(--bg-dark-2);
+  border-color: var(--border-dark);
+}
+.invert .step-card h3 {
+  color: var(--text-on-dark) !important;
+}
+.invert .step-card p {
+  color: var(--muted-on-dark) !important;
+}
+.invert .step-card .step-icon {
+  background: rgba(255,255,255,0.07);
+  border-color: var(--border-dark);
+  color: var(--muted-on-dark);
+}
+
+/* --- Deadline cards inside LIGHT sections (wrapper without .invert) --- */
+.wrapper:not(.invert) .deadline-card {
+  background: #ffffff;
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+.wrapper:not(.invert) .deadline-card .group-label {
+  color: var(--text-muted);
+  border-bottom-color: var(--border-light);
+}
+.wrapper:not(.invert) .deadline-card h3 {
+  color: var(--text-primary) !important;
+}
+.wrapper:not(.invert) .deadline-card p {
+  color: rgba(9,9,11,0.65) !important;
+}
+.wrapper:not(.invert) .deadline-card.highlight {
+  background: var(--bg-subtle);
+  border-color: #d4d4d8;
+}
+
+/* --- Team labels inside DARK sections --- */
+.invert .team-card .team-label h3 {
+  color: var(--text-on-dark) !important;
+}
+.invert .team-card .team-label p {
+  color: var(--muted-on-dark) !important;
+}
+
+/* --- Contact form inputs on DARK (invert) backgrounds --- */
+.wrapper.invert .fields input,
+.wrapper.invert .fields select,
+.wrapper.invert .fields textarea {
+  background: var(--bg-dark-2);
+  border-color: var(--border-dark);
+  color: var(--text-on-dark);
+}
+.wrapper.invert .fields label {
+  color: var(--muted-on-dark);
+}
+.wrapper.invert .fields input::placeholder,
+.wrapper.invert .fields textarea::placeholder {
+  color: var(--border-mid);
+}
+.wrapper.invert .fields select option {
+  background: var(--bg-dark-2);
+  color: var(--text-on-dark);
+}
+
+/* ============================================================
+   TYPOGRAPHY SYSTEM — Inter, best-practice scale + rhythm
+   ============================================================ */
+
+/* Crisp sub-pixel rendering — essential for Inter */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Base body rhythm */
+body {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* ---------- Heading hierarchy ----------
+   Inter needs progressively tighter tracking as size increases.
+   The "weight" of each character compounds at large sizes,
+   so -0.04em at hero scale ≠ the same feel as -0.04em at h3.  */
+
+h1 {
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.08 !important;
+}
+
+h2 {
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.18 !important;
+}
+
+h3 {
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.35 !important;
+}
+
+h4 {
+  font-weight: 600 !important;
+  letter-spacing: -0.008em !important;
+  line-height: 1.4 !important;
+}
+
+/* ---------- Hero h1 — display scale ---------- */
+.banner .content h1 {
+  font-size: clamp(2.5rem, 4.5vw, 3.25rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.07 !important;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Major paragraph (hero lead) ---------- */
+.banner .content .major,
+.spotlight .content .major {
+  font-size: 1.05rem !important;
+  line-height: 1.78 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.005em !important;
+}
+
+/* ---------- Body paragraphs ----------
+   Inter at 16px looks best between 1.68–1.75 leading.
+   Zero letter-spacing — Inter's sidebearings are already optimised. */
+p {
+  line-height: 1.72;
+  letter-spacing: 0;
+}
+
+/* ---------- Section label → h2 → intro paragraph rhythm ----------
+   Give the label a touch more air under it so the h2 feels anchored. */
+.section-label {
+  margin-bottom: 1rem;
+  letter-spacing: 0.14em;
+}
+
+/* ---------- Buttons ----------
+   Current 0.06em is inherited from old UI kit conventions.
+   Modern shadcn components use 0.02em or even tracking-normal.  */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+  font-size: 0.875rem !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* ---------- Form fields ---------- */
+.fields label {
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase;
+}
+
+.fields input,
+.fields select,
+.fields textarea {
+  font-size: 0.925rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+}
+
+/* ---------- Card headings ---------- */
+.step-card h3 {
+  letter-spacing: -0.015em !important;
+  line-height: 1.35 !important;
+  margin-bottom: 0.65rem;
+}
+
+.deadline-card h3 {
+  letter-spacing: -0.015em !important;
+  line-height: 1.3 !important;
+}
+
+.service-card h3,
+.output-item h4,
+.engagement-step h4 {
+  letter-spacing: -0.01em !important;
+  line-height: 1.35 !important;
+}
+
+/* ---------- Card body copy ---------- */
+.step-card p,
+.deadline-card p,
+.output-item p,
+.service-card p,
+.engagement-step p {
+  line-height: 1.72 !important;
+  letter-spacing: 0 !important;
+}
+
+/* ---------- Mission statement ---------- */
+.mission-statement {
+  letter-spacing: -0.025em;
+  line-height: 1.5;
+}
+
+/* ---------- Nav CTA — tighten slightly ---------- */
+.nav-cta {
+  letter-spacing: 0.005em;
+}
+
+/* ============================================================
+   BUTTON ACTIVE / PRESSED STATES — shadcn convention
+   Subtle downward shift + darkened surface on press
+   ============================================================ */
+
+.button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+              color 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+}
+
+/* Outline buttons (light sections) — press fills with zinc-100 */
+.button:not(.primary):active {
+  background-color: #f4f4f5 !important;
+  border-color: #d4d4d8 !important;
+  transform: translateY(1px) !important;
+}
+
+/* Filled buttons (dark/invert sections) — press to zinc-200 */
+#wrapper > .invert .button:active,
+.invert .button:active,
+.banner.invert .button:active {
+  background-color: #d4d4d8 !important;
+  border-color: #d4d4d8 !important;
+  transform: translateY(1px) !important;
+}
+
+/* Submit / CTA buttons — press darkens to zinc-700 */
+.wrapper input[type="submit"]:active {
+  background-color: #3f3f46 !important;
+  border-color: #3f3f46 !important;
+  transform: translateY(1px) !important;
+}
+
+.nav-cta:active {
+  background: #d4d4d8 !important;
+  transform: translateY(1px);
+}
+
+/* ============================================================
+   CARD HOVER STATES — shadcn convention
+   Slight lift (translateY) + border darkening + shadow deepening
+   ============================================================ */
+
+/* Step cards — light context */
+.step-card {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.step-card:hover {
+  border-color: #c4c4c8 !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+  transform: translateY(-2px);
+}
+
+/* Step cards — dark context */
+.invert .step-card:hover {
+  border-color: var(--border-mid) !important;
+  background: rgba(255,255,255,0.07) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  transform: translateY(-2px);
+}
+
+/* Deadline / belief cards */
+.deadline-card {
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.deadline-card:hover {
+  border-color: var(--border-mid) !important;
+  transform: translateY(-2px);
+}
+
+.wrapper:not(.invert) .deadline-card:hover {
+  border-color: #c4c4c8 !important;
+  background: #f4f4f5 !important;
+}
+
+/* Output items (Canopy page) */
+.output-item {
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.output-item:hover {
+  border-color: var(--border-mid);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+/* Service cards */
+.service-card {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+}
+
+.service-card:hover {
+  border-color: #d4d4d8;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   STEP CARDS — layout + icon fixes
+   ============================================================ */
+
+/* 4-card grid: switch to 2×2 so no orphaned card */
+.steps-grid:has(> .step-card:nth-child(4):last-child) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Horizontal icon + heading layout — icon anchors the title inline */
+.step-card {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  column-gap: 0.9rem;
+  row-gap: 0.65rem;
+  align-items: start;
+  text-align: left;
+}
+
+.step-icon {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 !important;   /* remove the auto-centering from base rule */
+  align-self: center;
+}
+
+.step-card h3 {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: left;
+  align-self: center;
+  margin: 0 !important;
+}
+
+/* Body copy + any badge spans full card width */
+.step-card p,
+.step-card > span {
+  grid-column: 1 / -1;
+  text-align: left;
 }
