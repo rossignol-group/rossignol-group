@@ -1925,3 +1925,125 @@ button {
   grid-column: 1 / -1;
   text-align: left;
 }
+
+/* ============================================================
+   ACETERNITY-INSPIRED EFFECTS
+   ============================================================ */
+
+/* --- 1. Dot background on dark sections ---
+   Subtle repeating 1px dot grid adds depth without noise.
+   Excluded from footer (kept solid). */
+#wrapper > section.invert,
+#wrapper > .banner.invert,
+#wrapper > .spotlight.invert {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.065) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+}
+
+/* --- 2. Card Spotlight ---
+   Radial glow follows cursor within each card via CSS custom
+   properties (--mouse-x / --mouse-y) set by effects.js.
+   pointer-events: none keeps the overlay non-interactive. */
+.step-card,
+.deadline-card,
+.output-item,
+.service-card {
+  position: relative;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.step-card::before,
+.deadline-card::before,
+.output-item::before,
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+/* Card content stays above the spotlight overlay */
+.step-card > *,
+.deadline-card > *,
+.output-item > *,
+.service-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.step-card:hover::before,
+.deadline-card:hover::before,
+.output-item:hover::before,
+.service-card:hover::before {
+  opacity: 1;
+}
+
+/* Light-section cards — barely-there dark dimple */
+.wrapper:not(.invert) .step-card::before,
+.wrapper:not(.invert) .deadline-card::before,
+.wrapper:not(.invert) .service-card::before {
+  background: radial-gradient(
+    480px circle at var(--mouse-x) var(--mouse-y),
+    rgba(0, 0, 0, 0.045),
+    transparent 40%
+  );
+}
+
+/* Dark-section cards — soft white glow */
+.invert .step-card::before,
+.invert .deadline-card::before,
+.output-item::before {
+  background: radial-gradient(
+    480px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.09),
+    transparent 40%
+  );
+}
+
+/* --- 3. Shimmer button ---
+   A light glint sweeps left to right on hover.
+   Only on filled buttons — outline buttons have no background
+   to contrast against so the effect would be invisible. */
+.invert .button,
+.nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.invert .button::after,
+.nav-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  pointer-events: none;
+}
+
+.invert .button:hover::after,
+.nav-cta:hover::after {
+  animation: btn-shimmer 0.52s ease forwards;
+}
+
+@keyframes btn-shimmer {
+  from { left: -100%; }
+  to   { left: 150%; }
+}
